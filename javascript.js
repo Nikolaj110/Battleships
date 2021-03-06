@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () =>{
     const infoDisplay = document.querySelector('#info')
     const userSquares = []
     const computerSquares = []
+    const isHorizontal = true
 
     const width = 10
 
@@ -128,43 +129,39 @@ document.addEventListener('DOMContentLoaded', () =>{
          ]
     },
     {
-         name:'cruiser',
-         directions:[
+        name: 'cruiser',
+        directions:[
              [0, 1, 2]
              [0, width, width*2]
          ]
     },
     {
-         name:'battleship',
-         directions:[
+        name: 'battleship',
+        directions:[
              [0, 1, 2, 3]
              [0, width, width*2, width*3]
-         ]
+        ]
     },
     {
-         name:'carrier',
-         directions:[
+        name:'carrier',
+        directions: [
              [0, 1, 2, 3, 4]
              [0, width, width*2, width*3, width*4]
-         ]
-    },
-    
+        ]
+    } 
  ]
 
 
  function generate(ship){
- let randomDirection = Math.floor(Math.random() * ship.directions.length)
+ let randomDirection = Math.abs(Math.floor(Math.random() * ship.directions.length))
  let current = ship.directions[randomDirection]
  if(randomDirection === 0) direction = 1
  if(randomDirection === 1) direction = 10
- console.log(directions[0])
- let x = ship.directions[0].length
- let randomStart = Math.floor(Math.random() * computerSquares.length - (ship.directions[0].length * direction))
+ let randomStart = Math.abs(Math.floor(Math.random() * computerSquares.length - (ship.directions[0].length * direction)))
 
  const isTaken = current.some(index => computerSquares[randomStart + index].classList.contains('taken'))
  const isAtRigthEdge = current.some(index => (randomStart + index) % width === width - 1)
  const isAtLeftEdge = current.some(index => (randomStart + index) % width === 0)
- console.log(isTaken)
 
  if(!isTaken && !isAtRigthEdge && !isAtLeftEdge) current.forEach(index => computerSquares[randomStart + index].classList.add('taken', ship.name))
 
@@ -173,6 +170,25 @@ document.addEventListener('DOMContentLoaded', () =>{
 
  generate(shipArray[0])
  generate(shipArray[1])
+ generate(shipArray[2])
+ generate(shipArray[3])
+ generate(shipArray[4])
+
+
+ function rotate(){
+     if(isHorizontal){
+         destroyer.classList.toggle('destroyer-container-vertical')
+         submarine.classList.toggle('destroyer-container-vertical')
+         cruiser.classList.toggle('destroyer-container-vertical')
+         battleship.classList.toggle('destroyer-container-vertical')
+         carrier.classList.toggle('destroyer-container-vertical')
+         isHorizontal = false
+     }
+ }
+
+
+ rotateButton.addEventListener('click', rotate)
+
 
 
 
