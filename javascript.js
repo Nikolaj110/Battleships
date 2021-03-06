@@ -1,16 +1,24 @@
 
-/*
+
 document.addEventListener('DOMContentLoaded', () => {
     const ships = document.querySelectorAll('.ship')
     const rutor = document.querySelectorAll('.ruta')
-})
 
 
-//x = element.getAttribute("data-x");
+
+
+    //x = element.getAttribute("data-x");
 //y = element.getAttrbiute("data-y");
 
 ships.forEach(ship => ship.addEventListener('dragstart', dragStart))
-rutor.forEach(ruta => ruta.addEventListener('dragstart', dragStart))
+ruta => ruta.addEventListener('dragover', dragOver)
+ruta => ruta.addEventListener('dragenter', dragEnter)
+ruta => ruta.addEventListener('dragleave', dragLeave)
+ruta => ruta.addEventListener('drop', drarDrop)
+ruta => ruta.addEventListener('dragend', dragEnd)
+
+
+
 
 
 let selectedShipNameWithIndex
@@ -29,8 +37,12 @@ function dragStart(){
     draggedShipLength = draggedShip.length
     console.log(draggedShip)
 }
+})
 
-*/
+
+
+
+/*
 
 document.addEventListener('DOMContentLoaded', () =>{
     const userGrid = document.querySelector('.grid-user')
@@ -50,10 +62,9 @@ document.addEventListener('DOMContentLoaded', () =>{
     const computerSquares = []
 
     const width = 10
-})
 
 
-function createBoard(grid, squares){
+    function createBoard(grid, squares){
     for (let i = 0; i < width*width; i++){
         const square = document.createElement('div')
         squares.dataset.id = i
@@ -64,5 +75,14 @@ function createBoard(grid, squares){
 
 createBoard(userGrid, userSquares)
 createBoard(computerGrid, computerSquares)
+
+
+
+
+
+})
+
+*/
+
 
 
