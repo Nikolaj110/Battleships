@@ -117,35 +117,35 @@ document.addEventListener('DOMContentLoaded', () =>{
     {
          name: 'destroyer',
          directions:[
-             [0, 1]
+             [0, 1],
              [0, width]
          ]
     },
     {
          name: 'submarine',
          directions:[
-             [0, 1, 2]
+             [0, 1, 2],
              [0, width, width*2]
          ]
     },
     {
         name: 'cruiser',
         directions:[
-             [0, 1, 2]
+             [0, 1, 2],
              [0, width, width*2]
          ]
     },
     {
         name: 'battleship',
         directions:[
-             [0, 1, 2, 3]
+             [0, 1, 2, 3],
              [0, width, width*2, width*3]
         ]
     },
     {
         name:'carrier',
         directions: [
-             [0, 1, 2, 3, 4]
+             [0, 1, 2, 3, 4],
              [0, width, width*2, width*3, width*4]
         ]
     } 
@@ -178,10 +178,10 @@ document.addEventListener('DOMContentLoaded', () =>{
  function rotate(){
      if(isHorizontal){
          destroyer.classList.toggle('destroyer-container-vertical')
-         submarine.classList.toggle('destroyer-container-vertical')
-         cruiser.classList.toggle('destroyer-container-vertical')
-         battleship.classList.toggle('destroyer-container-vertical')
-         carrier.classList.toggle('destroyer-container-vertical')
+         submarine.classList.toggle('submarine-container-vertical')
+         cruiser.classList.toggle('cruiser-container-vertical')
+         battleship.classList.toggle('battleship-container-vertical')
+         carrier.classList.toggle('carrier-container-vertical')
          isHorizontal = false
      }
  }
