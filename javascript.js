@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () =>{
     const infoDisplay = document.querySelector('#info')
     const userSquares = []
     const computerSquares = []
-    const isHorizontal = true
+    let isHorizontal = true
 
     const width = 10
 
@@ -183,15 +183,17 @@ document.addEventListener('DOMContentLoaded', () =>{
          battleship.classList.toggle('battleship-container-vertical')
          carrier.classList.toggle('carrier-container-vertical')
          isHorizontal = false
+         console.log(isHorizontal)
          return
      }
      if(!isHorizontal){
-         destroyer.classList.toggle('destroyer-container')
-         submarine.classList.toggle('submarine-container')
-         cruiser.classList.toggle('cruiser-container')
-         battleship.classList.toggle('battleship-container')
-         carrier.classList.toggle('carrier-container')
+         destroyer.classList.toggle('destroyer-container-vertical')
+         submarine.classList.toggle('submarine-container-vertical')
+         cruiser.classList.toggle('cruiser-container-vertical')
+         battleship.classList.toggle('battleship-container-vertical')
+         carrier.classList.toggle('carrier-container-vertical')
          isHorizontal = true
+         console.log(isHorizontal)
          return
      }
  }
@@ -199,6 +201,57 @@ document.addEventListener('DOMContentLoaded', () =>{
 
  rotateButton.addEventListener('click', rotate)
 
+
+ ships.forEach(ship => ship.addEventListener('dragstart', dragStart))
+ userSquares.forEach(square => square.addEventListener('dragstart', dragStart))
+ userSquares.forEach(square => square.addEventListener('dragover', dragOver))
+ userSquares.forEach(square => square.addEventListener('dragenter', dragEnter))
+ userSquares.forEach(square => square.addEventListener('dragleave', dragLeave))
+ userSquares.forEach(square => square.addEventListener('drop', dragDrop))
+ userSquares.forEach(square => square.addEventListener('dragend', dragEnd))
+
+ let selectedShipNameWithIndex
+ let draggedShip
+ let draggedShipLength
+
+ ships.forEach(ship => ship.addEventListener('mouse',(e) => {
+     selectedShipNameWithIndex = e.target.id
+ }))
+
+
+ function dragStart(){
+    draggedShip = this
+    draggedShipLength = draggedShip.length
+    console.log(draggedShip)
+ }
+
+ function dragOver(e){
+     e.preventDefault()
+ }
+
+ function dragEnter(e){
+     e.preventDefault()
+ }
+
+ function dragLeave(){
+     console.log('drag leave')
+ }
+
+ function dragDrop(){
+     let shipNameWithLastId = draggedShip.lastElementChild.id
+     let shipClass = shipNameWithLastId.slice(0, -2)
+     console.log(shipClass)
+     let lastShipIndex = parseInt(shipNameWithLastId.substr(-1))
+     let shipLastId = lastShipIndex + parseInt(this.dataset.id)
+
+     selectedShipIndex = parseInt(selectedShipNameWithIndex.substr(-1))
+     console.log(selectedShipIndex)
+
+ }
+
+ function dragEnd(){
+
+ }
 
 
 
