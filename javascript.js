@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
- let selectedShipNameWithIndex
+ let selectedShipNameWithi
  let draggedShip
  let draggedShipLength
 
@@ -214,8 +214,9 @@ document.addEventListener('DOMContentLoaded', () =>{
  let draggedShip
  let draggedShipLength
 
- ships.forEach(ship => ship.addEventListener('mouse',(e) => {
+ ships.forEach(ship => ship.addEventListener('mousedown', (e) => {
      selectedShipNameWithIndex = e.target.id
+     console.log(selectedShipNameWithIndex)
  }))
 
 
@@ -243,11 +244,25 @@ document.addEventListener('DOMContentLoaded', () =>{
      console.log(shipClass)
      let lastShipIndex = parseInt(shipNameWithLastId.substr(-1))
      let shipLastId = lastShipIndex + parseInt(this.dataset.id)
+     console.log(shipLastId)
 
      selectedShipIndex = parseInt(selectedShipNameWithIndex.substr(-1))
-     console.log(selectedShipIndex)
 
- }
+     shipLastId = shipLastId - selectedShipIndex
+     console.log(shipLastId)
+
+     if(isHorizontal){
+         for (let i = 0; i < draggedShipLength; i++) {
+             userSquares [parseInt(this.dataset.id) - selectedShipIndex + i].classList.add('taken', shipClass)
+             
+         }
+     } else if(!isHorizontal){
+         for (let i = 0; i < draggedShipLength; i++) {
+             userSquares [parseInt(this.dataset.id)+ width*i].classList.add('taken', shipClass)
+     }} else return
+     console.log(draggedShip)
+     displayGrid.removeChild(draggedShip)
+    }
 
  function dragEnd(){
 
