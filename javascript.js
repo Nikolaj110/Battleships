@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () =>{
     const userSquares = []
     const computerSquares = []
     let isHorizontal = true
-    let isGameOver = true
+    let isGameOver = false
     let currentPlayer = 'user'
 
     const width = 10
@@ -280,13 +280,15 @@ document.addEventListener('DOMContentLoaded', () =>{
      if(isGameOver) return
      if(currentPlayer === 'user'){
          turnDisplay.innerHTML ='Your Go'
+              console.log('spelaren kör')
          computerSquares.forEach(square => square.addEventListener('click', function(e){
-             reveal(square)
+             revealSquare(square)
          }
          ))
      }
      if(currentPlayer === 'computer'){
          turnDisplay.innerHTML ='Computer Go'
+         setTimeout (computerGo, 1000)
      }
  }
  startButton.addEventListener('click', playGame)
@@ -306,13 +308,36 @@ document.addEventListener('DOMContentLoaded', () =>{
 
      if(square.classList.contains('taken')) {
          square.classList.add('boom')
+     } else{
+         square.classList.add('miss')
      }
-
-
-
+     currentPlayer = 'computer'
+     playGame()
 
  }
 
+ startButton,addEventListener('click', playGame)
+ 
+ let cpuDestroyerCount = 0
+ let cpuSubmarineCount = 0
+ let cpuCruiserCount = 0
+ let cpuBattleshipCount = 0
+ let cpuCarrierCount = 0
+
+
+ function computerGo(){
+     console.log('datorn kör')
+     let random = Math.floor(Math.random() * userSquares.length)
+     if(!userSquares[random].classList.contains('boom')){
+         userSquares[random].classList.add('boom')
+         if(userSquares[random].classList.contains('destroyer')) cpuDestroyerCount++
+         if(userSquares[random].classList.contains('submarine')) cpuSubmarineCount++
+         if(userSquares[random].classList.contains('cruiser')) cpuCruiserCount++
+         if(userSquares[random].classList.contains('battleship')) cpuBattleshipCount++
+         if(userSquares[random].classList.contains('carrier')) cpuCarrierCount++
+     } else computerGo()
+     currentPlayer = 'user'
+ }
 
 
 })

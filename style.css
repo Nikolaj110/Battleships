@@ -199,4 +199,10 @@ header{
     background-color: green;
 }
 
-.boom{}
+.boom{
+    background-color: red;
+}
+
+.miss{
+    background-color: black;
+}
