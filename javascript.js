@@ -1,43 +1,85 @@
-/*
+
 
 //x = element.getAttribute("data-x");
 //y = element.getAttrbiute("data-y");
 
 document.addEventListener('DOMContentLoaded', () => {
-    const ships = document.querySelectorAll('.ship')
+    const ships = document.querySelectorAll('.skepp')
     const rutor = document.querySelectorAll('.ruta')
+    const rotateButton = document.querySelector('#rotate')
+    const skepp1 = document.querySelector('.skepp-1')
+    const skepp2 = document.querySelector('.skepp-2')
+    const skepp3 = document.querySelector('.skepp-3')
+    let isHorizontal = true
+    
 
+
+
+
+
+
+    function rotate(){
+     if(isHorizontal){
+         
+         skepp1.classList.toggle('skepp-1-vertikal')
+         skepp2.classList.toggle('skepp-2-vertikal')
+         skepp3.classList.toggle('skepp-3-vertikal')
+         
+         isHorizontal = false
+         console.log(isHorizontal)
+/*
+         for (let i = 1; i < 3; i++) {
+             console.log('skepp-'+i)
+             console.log(skepp-(i)-vertikal)
+             'skepp-'+i.classList.toggle('skepp-'+i+'-vertikal')
+             
+         }*/
+     }
+     if(!isHorizontal){
+         destroyer.classList.toggle('destroyer-container-vertical')
+         submarine.classList.toggle('submarine-container-vertical')
+         cruiser.classList.toggle('cruiser-container-vertical')
+         battleship.classList.toggle('battleship-container-vertical')
+         carrier.classList.toggle('carrier-container-vertical')
+         isHorizontal = true
+         console.log(isHorizontal)
+         return
+     }
+ }
+
+
+ rotateButton.addEventListener('click', rotate)
 
 
 
     
 
- ships.forEach(ship => ship.addEventListener('dragstart', dragStart))
- ruta => ruta.addEventListener('dragover', dragOver)
- ruta => ruta.addEventListener('dragenter', dragEnter)
- ruta => ruta.addEventListener('dragleave', dragLeave)
- ruta => ruta.addEventListener('drop', dragDrop)
- ruta => ruta.addEventListener('dragend', dragEnd)
+ ships.forEach(skepp => skepp.addEventListener('dragstart', dragStart))
+ rutor.forEach(ruta => ruta.addEventListener('dragover', dragOver))
+ rutor.forEach(ruta => ruta.addEventListener('dragenter', dragEnter))
+ rutor.forEach(ruta => ruta.addEventListener('dragleave', dragLeave))
+ rutor.forEach(ruta => ruta.addEventListener('drop', dragDrop))
+ rutor.forEach(ruta => ruta.addEventListener('dragend', dragEnd))
 
 
 
 
 
- let selectedShipNameWithi
- let draggedShip
+ let selectedShipNameWithIndex
+ let valtSkepp
  let draggedShipLength
 
 
- ships.forEach(ship => ship.addEventListener('mousedown', (e) =>{
+ ships.forEach(skepp => skepp.addEventListener('mousedown', (e) =>{
     selectedShipNameWithIndex = e.target.id 
     console.log(selectedShipNameWithIndex)
  }))
 
 
  function dragStart(){
-    draggedShip = this
-    draggedShipLength = draggedShip.length
-    console.log(draggedShip)
+    valtSkepp = this
+    draggedShipLength = this.childNodes.length
+    console.log(valtSkepp)
     console.log(draggedShipLength)
  }
 
@@ -53,15 +95,44 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('drag leave')
  }
 
- function dragDrop(){
-    let shipNameWithLastId = draggedShip.lastChild.id
-    let shipClass = shipNameWithLastId.slice(0,-2)
-    console.log(shipClass)
- }
+ function dragDrop() {
+     let skeppSistaId = valtSkepp.lastChild.id
+     console.log(skeppSistaId)
+     let shipClass = skeppSistaId.slice(0, -2)
+     console.log(shipClass)
+     let lastShipIndex = parseInt(skeppSistaId.substr(-1))
+     console.log(this)
+     let shipLastId = lastShipIndex + parseInt(this.getAttribute('data-x'))
+     console.log(this)
+     console.log(shipLastId)
+     const notAllowedHorizontal = [0,10,20,30,40,50,60,70,80,90,1,11,21,31,41,51,61,71,81,91,2,12,22,32,42,52,62,72,82,92,3,13,23,33,43,53,63,73,83,93]
+     const notAllowedVertical = [99,98,97,96,95,94,93,92,91,90,89,88,87,86,85,84,83,82,81,80,79,78,77,76,75,74,73,72,71,70,69,68,67,66,65,64,63,62,61,60]
+
+     let newNotAllowedHorizontal = notAllowedHorizontal.splice(0, 10*lastShipIndex)
+     let newNotAllowedVertical = notAllowedVertical.splice(0, 10*lastShipIndex)
+     selectedShipIndex = parseInt(selectedShipNameWithIndex.substr(-1))
+
+     shipLastId = shipLastId - selectedShipIndex
+     console.log(shipLastId)
+
+     if(isHorizontal && !newNotAllowedHorizontal.includes(shipLastId)){
+         for (let i = 0; i < draggedShipLength; i++) {
+             userSquares[parseInt(this.dataset.id) - selectedShipIndex + i].classList.add('taken', shipClass)
+            }
+        } else if(!isHorizontal && !newNotAllowedVertical.includes(shipLastId)){
+         for (let i = 0; i < draggedShipLength; i++) {
+             userSquares[parseInt(this.dataset.id) - selectedShipIndex + width*i].classList.add('taken', shipClass)
+            }
+        } else return
+
+        displayGrid.removeChild(valtSkepp)
+    }
 
  function dragEnd(){
      
  }
+
+ 
 
 
 
@@ -76,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-*/
+/*
 
 document.addEventListener('DOMContentLoaded', () =>{
     const userGrid = document.querySelector('.grid-user')
@@ -399,5 +470,5 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 
 
-
+*/
 

@@ -1,9 +1,12 @@
-/*
+
 header{
     background-color: blue;
     color: brown;
 }
 
+#rotate{
+    background-color: green;
+}
 
 
 .rutnat{
@@ -14,27 +17,30 @@ header{
     grid-template-columns: repeat(10, 10%);
     color: aqua;
     border-color: black;
+
 }
 
 
 .ruta{
-    width: 100%;
-    height: 100%;
-    border: solid 2px black;
+    width: 90%;
+    height: 90%;
+    margin: 5%;
+    background-color: aqua;
 }
+
 
 .grid-display{
     background-color: yellow;
     padding: 20px;
 }
 
-.ship div{
+.skepp div{
     width: 50px;
     height: 50px;
 }
 
 
-.skepp1{
+.skepp-1{
     height: 50px;
     width: 150px;
     background-color: orange;
@@ -42,14 +48,51 @@ header{
     margin: 10px;
 }
 
-.skepp2{
+.skepp-2{
     height: 50px;
     width: 150px;
-    background-color: lightblue;
+    background-color: blue;
     display: flex;
     margin: 10px;
 }
-*/
+
+.skepp-3{
+    height: 50px;
+    width: 200px;
+    background-color: green;
+    display: flex;
+    margin: 10px;
+}
+
+
+
+.skepp-1-vertikal{
+    height: 150px;
+    width: 50px;
+    background-color: orange;
+    display: flex;
+    margin: 10px;
+}
+
+.skepp-2-vertikal{
+    height: 50px;
+    width: 150px;
+    background-color: blue;
+    display: flex;
+    margin: 10px;
+}
+
+.skepp-3-vertikal{
+    height: 50px;
+    width: 200px;
+    background-color: green;
+    display: flex;
+    margin: 10px;
+}
+
+
+
+/*
 
 
 
@@ -206,3 +249,5 @@ header{
 .miss{
     background-color: black;
 }
+
+*/
