@@ -75,16 +75,16 @@ header{
 }
 
 .skepp-2-vertikal{
-    height: 50px;
-    width: 150px;
+    height: 150px;
+    width: 50px;
     background-color: blue;
     display: flex;
     margin: 10px;
 }
 
 .skepp-3-vertikal{
-    height: 50px;
-    width: 200px;
+    height: 200px;
+    width: 50px;
     background-color: green;
     display: flex;
     margin: 10px;

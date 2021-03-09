@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
          skepp1.classList.toggle('skepp-1-vertikal')
          skepp2.classList.toggle('skepp-2-vertikal')
          skepp3.classList.toggle('skepp-3-vertikal')
-         
          isHorizontal = false
          console.log(isHorizontal)
 /*
@@ -36,11 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
          }*/
      }
      if(!isHorizontal){
-         destroyer.classList.toggle('destroyer-container-vertical')
-         submarine.classList.toggle('submarine-container-vertical')
-         cruiser.classList.toggle('cruiser-container-vertical')
-         battleship.classList.toggle('battleship-container-vertical')
-         carrier.classList.toggle('carrier-container-vertical')
+         skepp1.classList.toggle('skepp-1')
+         skepp2.classList.toggle('skepp-2')
+         skepp3.classList.toggle('skepp-3')
          isHorizontal = true
          console.log(isHorizontal)
          return
@@ -96,6 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
  }
 
  function dragDrop() {
+     let valdRuta = (parseInt(this.getAttribute('data-x'))+(parseInt(this.getAttribute('data-y')*10)))
+     console.log(valdRuta)
      let skeppSistaId = valtSkepp.lastChild.id
      console.log(skeppSistaId)
      let shipClass = skeppSistaId.slice(0, -2)
