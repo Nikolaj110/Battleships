@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () =>{
     const userGrid = document.querySelector('.grid-user')
     const computerGrid = document.querySelector('.grid-computer')
-    const displayGrid = document.querySelector('grid-display')
+    const displayGrid = document.querySelector('.grid-display')
     const ships = document.querySelectorAll('.ship')
     const destroyer = document.querySelector('.destroyer-container')
     const submarine = document.querySelector('.submarine-container')
@@ -279,17 +279,17 @@ document.addEventListener('DOMContentLoaded', () =>{
  function playGame(){
      if(isGameOver) return
      if(currentPlayer === 'user'){
-         turnDisplay.innerHTML ='Your Go'
-              console.log('spelaren kör')
-         computerSquares.forEach(square => square.addEventListener('click', function(e){
-             revealSquare(square)
-         }
-         ))
+            turnDisplay.innerHTML ='Your Go'
+            console.log('spelaren kör')
+            computerSquares.forEach(square => square.addEventListener('click', function(e){
+            revealSquare(square)
+         }))
      }
      if(currentPlayer === 'computer'){
-         turnDisplay.innerHTML ='Computer Go'
-         setTimeout (computerGo, 1000)
+         turnDisplay.innerHTML = 'Computer Go'
+         computerGo()
      }
+     console.log('färdig')
  }
  startButton.addEventListener('click', playGame)
 
@@ -313,12 +313,13 @@ document.addEventListener('DOMContentLoaded', () =>{
      } else{
          square.classList.add('miss')
      }
+     checkForWins()
      currentPlayer = 'computer'
+     console.log('Wubba')
      playGame()
 
  }
 
- startButton,addEventListener('click', playGame)
  
  let cpuDestroyerCount = 0
  let cpuSubmarineCount = 0
@@ -330,13 +331,15 @@ document.addEventListener('DOMContentLoaded', () =>{
  function computerGo(){
      console.log('datorn kör')
      let random = Math.floor(Math.random() * userSquares.length)
-     if(!userSquares[random].classList.contains('boom')){
+     console.log(random)
+     if (!userSquares[random].classList.contains('boom')){
          userSquares[random].classList.add('boom')
          if(userSquares[random].classList.contains('destroyer')) cpuDestroyerCount++
          if(userSquares[random].classList.contains('submarine')) cpuSubmarineCount++
          if(userSquares[random].classList.contains('cruiser')) cpuCruiserCount++
          if(userSquares[random].classList.contains('battleship')) cpuBattleshipCount++
          if(userSquares[random].classList.contains('carrier')) cpuCarrierCount++
+         checkForWins()
      } else computerGo()
      currentPlayer = 'user'
      turnDisplay.innerHTML = 'Your Go'
