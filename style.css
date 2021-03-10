@@ -22,9 +22,8 @@ header{
 
 
 .ruta{
-    width: 90%;
-    height: 90%;
-    margin: 5%;
+    width: 100%;
+    height: 100%;
     background-color: aqua;
 }
 
@@ -42,10 +41,9 @@ header{
 
 .skepp-1{
     height: 50px;
-    width: 150px;
+    width: 100px;
     background-color: orange;
     display: flex;
-    margin: 10px;
 }
 
 .skepp-2{
@@ -53,21 +51,33 @@ header{
     width: 150px;
     background-color: blue;
     display: flex;
-    margin: 10px;
 }
 
 .skepp-3{
     height: 50px;
-    width: 200px;
+    width: 150px;
     background-color: green;
     display: flex;
-    margin: 10px;
+}
+
+.skepp-4{
+    height: 50px;
+    width: 200px;
+    background-color: pink;
+    display: flex;
+}
+
+.skepp-5{
+    height: 50px;
+    width: 250px;
+    background-color: purple;
+    display: flex;
 }
 
 
 
 .skepp-1-vertikal{
-    height: 150px;
+    height: 100px;
     width: 50px;
     background-color: orange;
     display: flex;
@@ -83,11 +93,33 @@ header{
 }
 
 .skepp-3-vertikal{
-    height: 200px;
+    height: 150px;
     width: 50px;
     background-color: green;
     display: flex;
     margin: 10px;
+}
+
+.skepp-4-vertikal{
+    height: 200px;
+    width: 50px;
+    background-color: pink;
+    display: flex;
+    margin: 10px;
+}
+
+.skepp-5-vertikal{
+    height: 250px;
+    width: 50px;
+    background-color: purple;
+    display: flex;
+    margin: 10px;
+}
+
+
+
+.skepp1{
+    background-color: orange;
 }
 
 
