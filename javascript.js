@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
  let selectedShipNameWithIndex
  let valtSkepp
- let draggedShipLength
+ let skeppLangd
 
 
  ships.forEach(skepp => skepp.addEventListener('mousedown', (e) =>{
@@ -82,9 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
  function dragStart(){
     valtSkepp = this
-    draggedShipLength = this.childNodes.length
+    skeppLangd = this.childNodes.length
     console.log(valtSkepp)
-    console.log(draggedShipLength)
+    console.log(skeppLangd)
  }
 
  function dragOver(e){
@@ -100,21 +100,21 @@ document.addEventListener('DOMContentLoaded', () => {
  }
 
  function dragDrop() {
-     let valdRuta = (parseInt(this.getAttribute('data-x'))+(parseInt(this.getAttribute('data-y')*10)))
-     console.log(valdRuta)
+     let tempX = parseInt(this.getAttribute('data-x'))
+     let tempY = parseInt(this.getAttribute('data-y'))
+     let valdRuta = (tempX+(tempY*10))
+     console.log('valdRuta är '+valdRuta)
      let skeppMedSistaId = valtSkepp.lastChild.id
      console.log(skeppMedSistaId)
      let shipClass = skeppMedSistaId.slice(0, -2)
+     shipClass = shipClass.replace('-', '')
      console.log(shipClass)
      let lastShipIndex = parseInt(skeppMedSistaId.substr(-1))
      console.log(this)
-     let skeppSistaX = lastShipIndex + parseInt(this.getAttribute('data-x'))
-     let skeppSistaY = lastShipIndex + parseInt(this.getAttribute('data-y'))
-     console.log(this)
-     console.log(skeppSistaX)
-     console.log(skeppSistaY)
-     skeppSistaId = valtSkepp + draggedShipLength
-     const forbjudnaXRader = [9, 8, 7, 6]
+     let skeppSistaX = skeppLangd + tempX
+     let skeppSistaY = lastShipIndex + tempY
+     skeppSistaId = valtSkepp + skeppLangd
+     const forbjudnaXRader = [0, 1, 2, 3]
      const forbjudnaYRader = [9, 8, 7, 6]
      
 
@@ -125,18 +125,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
      skeppSistaId = skeppSistaId - selectedShipIndex
      console.log(skeppSistaId)
+     console.log(skeppLangd)
+     console.log(skeppSistaX)
+     console.log((parseInt(skeppLangd)-1))
 
-     if(isHorizontal && !forbjudnaXRader.includes(this.getAttribute('data-x')) && !forbjudnaYRader.includes(this.getAttribute('data-y'))){
-         for (let i = 0; i < draggedShipLength; i++) {
+     if(isHorizontal && !forbjudnaXRader.includes(skeppSistaX) && (parseInt(skeppLangd)-1) < parseInt(skeppSistaX)){
+         for (let i = 0; i < skeppLangd; i++) {
              //userSquares[parseInt(this.dataset.id) - selectedShipIndex + i].classList.add('taken', shipClass)
-             this.classList.add(shipClass)
-             console.log(rutor.setAttribute('data-x',(i+parseInt(this.getAttribute('data-x')))))
-             let temp = rutor.setAttribute('data-x',(i+parseInt(this.getAttribute('data-x'))))
-             temp.add(shipClass)
+             rutor[(tempX+i)+(tempY*10)].classList.add('tagen', shipClass)
             }
-        } else if(!isHorizontal && !forbjudnaXRader.includes(this.getAttribute('data-x')) && !forbjudnaYRader.includes(this.getAttribute('data-y'))){
-         for (let i = 0; i < draggedShipLength; i++) {
+        } else if(!isHorizontal && !forbjudnaYRader.includes(tempY)){
+         for (let i = 0; i < skeppLangd; i++) {
              //userSquares[parseInt(this.dataset.id) - selectedShipIndex + width*i].classList.add('taken', shipClass)
+             rutor[(tempX)+((i+tempY)*10)].classList.add('tagen', shipClass)
             }
         } else return
 
