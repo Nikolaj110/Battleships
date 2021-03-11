@@ -11,9 +11,8 @@ h1{
     color: whitesmoke;
 }
 
-.undertext{
-    font-size: 300%;
-    color: whitesmoke;
+#undertext{
+    font-size: 200%;
 }
 
 .huvud-kropp{

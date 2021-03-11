@@ -167,27 +167,29 @@ document.addEventListener('DOMContentLoaded', () => {
      checkForWins()
  }
 
- let totalPoang
+ var stringText = document.getElementById("undertext");
+
 
  function checkForWins(){
      if(skepp1Count == 2){
-         totalPoang = totalPoang + 1
+         skepp1Count = 10
      }
      if(skepp2Count == 3){
-        totalPoang = totalPoang + 1
+        skepp2Count = 10
      }
      if(skepp3Count == 3){
-         totalPoang = totalPoang + 1
+         skepp3Count = 10
      }
      if(skepp4Count == 4){
-         totalPoang = totalPoang + 1
+         skepp4Count = 10
      }
      if(skepp5Count == 5){
-         totalPoang = totalPoang + 1
+         skepp5Count = 10
      }
-
-     if((totalPoang) === 5){
-         undertext.innerHTML = 'DU VANN'
+     console.log(skepp1Count + skepp2Count + skepp3Count + skepp4Count + skepp5Count)
+     if(skepp1Count + skepp2Count + skepp3Count + skepp4Count + skepp5Count === 50){
+         console.log('yolo')
+         stringText.innerHTML = 'DU VANN'
      }
 
  }
