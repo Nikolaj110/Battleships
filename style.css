@@ -4,6 +4,10 @@ header{
     color: brown;
 }
 
+.huvud-kropp{
+    display: flex;
+}
+
 #rotate{
     background-color: green;
 }
@@ -31,6 +35,13 @@ header{
 .grid-display{
     background-color: yellow;
     padding: 20px;
+}
+.grid-display-vertikal{
+    background-color: red;
+    padding: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    
 }
 
 .skepp div{

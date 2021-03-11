@@ -29,15 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
          skepp3.classList.toggle('skepp-3-vertikal')
          skepp4.classList.toggle('skepp-4-vertikal')
          skepp5.classList.toggle('skepp-5-vertikal')
+         displayGrid.classList.toggle('grid-display-vertikal')
          isHorizontal = false
          console.log(isHorizontal)
-/*
-         for (let i = 1; i < 3; i++) {
-             console.log('skepp-'+i)
-             console.log(skepp-(i)-vertikal)
-             'skepp-'+i.classList.toggle('skepp-'+i+'-vertikal')
-             
-         }*/
+         return
+         
+
      }
      if(!isHorizontal){
          skepp1.classList.toggle('skepp-1')
@@ -45,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
          skepp3.classList.toggle('skepp-3')
          skepp4.classList.toggle('skepp-4')
          skepp5.classList.toggle('skepp-5')
+         displayGrid.classList.toggle('grid-display')
          isHorizontal = true
          console.log(isHorizontal)
          return
@@ -126,15 +124,14 @@ document.addEventListener('DOMContentLoaded', () => {
      skeppSistaId = skeppSistaId - selectedShipIndex
      console.log(skeppSistaId)
      console.log(skeppLangd)
-     console.log(skeppSistaX)
-     console.log((parseInt(skeppLangd)-1))
-
-     if(isHorizontal && !forbjudnaXRader.includes(skeppSistaX) && (parseInt(skeppLangd)-1) < parseInt(skeppSistaX)){
+     console.log(tempX)
+     console.log(isHorizontal)
+     if(isHorizontal && tempX<(11-skeppLangd)){
          for (let i = 0; i < skeppLangd; i++) {
              //userSquares[parseInt(this.dataset.id) - selectedShipIndex + i].classList.add('taken', shipClass)
              rutor[(tempX+i)+(tempY*10)].classList.add('tagen', shipClass)
             }
-        } else if(!isHorizontal && !forbjudnaYRader.includes(tempY)){
+        } else if(!isHorizontal && tempY<(11-skeppLangd)){
          for (let i = 0; i < skeppLangd; i++) {
              //userSquares[parseInt(this.dataset.id) - selectedShipIndex + width*i].classList.add('taken', shipClass)
              rutor[(tempX)+((i+tempY)*10)].classList.add('tagen', shipClass)
