@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function rotate(){
      if(isHorizontal){
-         
+         console.log('Är horisontell')
          skepp1.classList.toggle('skepp-1-vertikal')
          skepp2.classList.toggle('skepp-2-vertikal')
          skepp3.classList.toggle('skepp-3-vertikal')
@@ -37,12 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
      }
      if(!isHorizontal){
-         skepp1.classList.toggle('skepp-1')
-         skepp2.classList.toggle('skepp-2')
-         skepp3.classList.toggle('skepp-3')
-         skepp4.classList.toggle('skepp-4')
-         skepp5.classList.toggle('skepp-5')
-         displayGrid.classList.toggle('grid-display')
+         console.log('Är int horisontell')
+         skepp1.classList.toggle('skepp-1-vertikal')
+         skepp2.classList.toggle('skepp-2-vertikal')
+         skepp3.classList.toggle('skepp-3-vertikal')
+         skepp4.classList.toggle('skepp-4-vertikal')
+         skepp5.classList.toggle('skepp-5-vertikal')
+         displayGrid.classList.toggle('grid-display-vertikal')
          isHorizontal = true
          console.log(isHorizontal)
          return
