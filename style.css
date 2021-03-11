@@ -2,6 +2,18 @@
 header{
     background-color: blue;
     color: brown;
+    display: flex;
+    justify-content: center;
+}
+
+h1{
+    font-size: 300%;
+    color: whitesmoke;
+}
+
+.undertext{
+    font-size: 300%;
+    color: whitesmoke;
 }
 
 .huvud-kropp{
@@ -143,6 +155,14 @@ header{
 }
 .skepp5{
     background-color: purple;
+}
+
+.boom{
+    background-color: red;
+}
+
+.miss{
+    background-color: black;
 }
 
 

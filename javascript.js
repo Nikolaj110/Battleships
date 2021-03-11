@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const skepp5 = document.querySelector('.skepp-5')
     let isHorizontal = true
     const displayGrid = document.querySelector('.grid-display')
+    const underText = document.querySelector('#undertext')
     
 
 
@@ -23,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function rotate(){
      if(isHorizontal){
-         console.log('Är horisontell')
          skepp1.classList.toggle('skepp-1-vertikal')
          skepp2.classList.toggle('skepp-2-vertikal')
          skepp3.classList.toggle('skepp-3-vertikal')
@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
      }
      if(!isHorizontal){
-         console.log('Är int horisontell')
          skepp1.classList.toggle('skepp-1-vertikal')
          skepp2.classList.toggle('skepp-2-vertikal')
          skepp3.classList.toggle('skepp-3-vertikal')
@@ -116,9 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
      const forbjudnaXRader = [0, 1, 2, 3]
      const forbjudnaYRader = [9, 8, 7, 6]
      
-
-     //let newNotAllowedHorizontal = notAllowedHorizontal.splice(0, 10*lastShipIndex)
-     //let newNotAllowedVertical = notAllowedVertical.splice(0, 10*lastShipIndex)
      console.log(skeppSistaId)
      selectedShipIndex = parseInt(selectedShipNameWithIndex.slice(-1))
 
@@ -129,12 +125,10 @@ document.addEventListener('DOMContentLoaded', () => {
      console.log(isHorizontal)
      if(isHorizontal && tempX<(11-skeppLangd)){
          for (let i = 0; i < skeppLangd; i++) {
-             //userSquares[parseInt(this.dataset.id) - selectedShipIndex + i].classList.add('taken', shipClass)
              rutor[(tempX+i)+(tempY*10)].classList.add('tagen', shipClass)
             }
         } else if(!isHorizontal && tempY<(11-skeppLangd)){
          for (let i = 0; i < skeppLangd; i++) {
-             //userSquares[parseInt(this.dataset.id) - selectedShipIndex + width*i].classList.add('taken', shipClass)
              rutor[(tempX)+((i+tempY)*10)].classList.add('tagen', shipClass)
             }
         } else return
@@ -143,11 +137,60 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
  function dragEnd(){
-     
+     console.log('dragend')
+ }
+ rutor.forEach(square => square.addEventListener('click', function(e){
+    revealSquare(square)
+    }))
+
+ let skepp1Count = 0
+ let skepp2Count = 0
+ let skepp3Count = 0
+ let skepp4Count = 0
+ let skepp5Count = 0
+
+
+ function revealSquare(square){
+     if(!square.classList.contains('boom')){
+         if(square.classList.contains('skepp1')) skepp1Count++
+         if(square.classList.contains('skepp2')) skepp2Count++
+         if(square.classList.contains('skepp3')) skepp3Count++
+         if(square.classList.contains('skepp4')) skepp4Count++
+         if(square.classList.contains('skepp5')) skepp5Count++
+     }
+
+     if(square.classList.contains('tagen')) {
+         square.classList.add('boom')
+     } else{
+         square.classList.add('miss')
+     }
+     checkForWins()
  }
 
- 
+ let totalPoang
 
+ function checkForWins(){
+     if(skepp1Count == 2){
+         totalPoang = totalPoang + 1
+     }
+     if(skepp2Count == 3){
+        totalPoang = totalPoang + 1
+     }
+     if(skepp3Count == 3){
+         totalPoang = totalPoang + 1
+     }
+     if(skepp4Count == 4){
+         totalPoang = totalPoang + 1
+     }
+     if(skepp5Count == 5){
+         totalPoang = totalPoang + 1
+     }
+
+     if((totalPoang) === 5){
+         undertext.innerHTML = 'DU VANN'
+     }
+
+ }
 
 
 
