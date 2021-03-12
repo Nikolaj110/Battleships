@@ -15,6 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let isHorizontal = true
     const displayGrid = document.querySelector('.grid-display')
     const underText = document.querySelector('#undertext')
+    let spel = false
+    const startButton = document.querySelector('#start')
+    var stringText = document.getElementById("undertext");
+    
     
 
 
@@ -139,8 +143,24 @@ document.addEventListener('DOMContentLoaded', () => {
  function dragEnd(){
      console.log('dragend')
  }
+
+ startButton.addEventListener('click', startaSpel)
+
+
+ function startaSpel(){ 
+     if(!displayGrid.contains(skepp1) && !displayGrid.contains(skepp2) && !displayGrid.contains(skepp3) && !displayGrid.contains(skepp4) && !displayGrid.contains(skepp5)){
+         spel = true
+         stringText.innerHTML = 'Spelet är igång'
+     }
+ }
+
+
+
  rutor.forEach(square => square.addEventListener('click', function(e){
-    revealSquare(square)
+     console.log(spel)
+     if(spel === true){
+         revealSquare(square)
+     }
     }))
 
  let skepp1Count = 0
@@ -167,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
      checkForWins()
  }
 
- var stringText = document.getElementById("undertext");
+ 
 
 
  function checkForWins(){

@@ -7,20 +7,46 @@ header{
 }
 
 h1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 300%;
     color: whitesmoke;
 }
 
 #undertext{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 200%;
+}
+
+.undertext-div{
+    display: flex;
+    justify-content: center;
 }
 
 .huvud-kropp{
     display: flex;
+    justify-content: center;
 }
 
 #rotate{
-    background-color: green;
+    background-color: palevioletred;
+    height: 100px;
+    width: 150px;
+    font-size: 200%;
+    color: teal;
+}
+
+#start{
+    background-color: teal;
+    height: 100px;
+    width: 150px;
+    font-size: 200%;
+    color: palevioletred;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
 }
 
 
@@ -48,7 +74,7 @@ h1{
     padding: 20px;
 }
 .grid-display-vertikal{
-    background-color: red;
+    background-color: yellow;
     padding: 20px;
     display: flex;
     flex-wrap: nowrap;
